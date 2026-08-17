@@ -11,7 +11,7 @@ load_dotenv()
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ADMIN_CHAT_ID =  os.environ.get("ADMIN_CHAT_ID")
 
-app = Flask(name)
+app = Flask(__name__)
 
 # --- FLASK ROUTES ---
 
