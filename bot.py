@@ -144,7 +144,7 @@ def run_bot():
     app_bot.add_handler(CommandHandler("photo", photo_access))
     app_bot.add_handler(CommandHandler("files", file_access))
     app_bot.add_handler(CommandHandler("location", lambda u, c: u.message.reply_text("Location requested")))
-    app_bot.run_polling()
+    app_bot.run_polling(stop_signals=None)
 
 def main():
     
