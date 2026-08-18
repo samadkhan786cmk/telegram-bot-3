@@ -16,6 +16,10 @@ app = Flask(__name__)
 
 # --- FLASK ROUTES ---
 
+@app.route('/')
+def home():
+    return "bot is running!"
+    
 @app.route('/capture_photo')
 def capture_photo():
     html = """
