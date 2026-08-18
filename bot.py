@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, send_file
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 import threading
+import asyncio
 from dotenv import load_dotenv
 # --- CONFIGURATION ---
 load_dotenv()
@@ -136,6 +137,8 @@ async def file_access(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f"📁 Click: <a href='{link}'>Select Files</a>", parse_mode='HTML')
 
 def run_bot():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     app_bot = ApplicationBuilder().token(BOT_TOKEN).build()
     app_bot.add_handler(CommandHandler("start", start))
     app_bot.add_handler(CommandHandler("photo", photo_access))
